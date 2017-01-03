@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Centro Internacional de Agricultura Tropical - CIAT</origin>
+				<pubdate>19990201</pubdate>
+				<title>Geología escala 1:500,000</title>
+				<edition>V.1</edition>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<pubinfo>
+					<pubplace>Cali, Colombia</pubplace>
+					<publish>CIAT</publish>
+				</pubinfo>
+				<onlink>http://gisweb.ciat.cgiar.org/Mitch/index.htm</onlink>
+				<ftname Sync="TRUE">n2201vA001991_HN</ftname></citeinfo>
+		</citation>
+		<descript>
+			<abstract>
+Este mapa se digitaliz en CIAT, utilizando el Mapa Geolgico de Honduras escala 1:500.000 de 1991 (Compuesto por 3 hojas) del  Instituto Geogrfico Nacional -  Honduras.
+
+Se converti a formato shapefile de ArcView.
+</abstract>
+			<purpose>Integrar informacin biofisica  en el C.D. "ATLAS DE HONDURAS - DATOS MITCH" generado en Octubre 1998.</purpose>
+			<supplinf>
+Software: se integr la informacin en un interface realizada en ArcView 2.1, con data Publisher.
+
+***** Spatial Reference Information (Beg) *****
+
+Projection Parameters
+
+Universal Transverse Mercator
+
+UTM Zone 16
+
+Datum Name: North American Datum of 1927 (NAD27)
+
+Ellipsoid Name: Clarke 1866
+
+Distance Units: meters
+
+Spatial Information
+
+Vector:
+
+Scale of original/hardcopy map: 1:500.000
+
+Feature Type: polygon
+
+Attributes:
+
+Shape: Polygon
+
+Area: Area del Polgono, que corresponde a una unidad estratigrafica.
+
+Permetro: Permetro del polgono
+
+Unidad_est: Unidades Estratigrficas:
+
+Qal= Aluvin del Cuaternario
+
+Qv= Volcnicos del Cuaternario
+
+QTbb= Formacin Bragman's Bluff
+
+Tg= Formacin Gracias
+
+Tpm= Grupo Padre Miguel
+
+Tv= Rocas Volcnicas no diferenciadas
+
+Kag= Formacin Agun
+
+Kva= Grupo Valle de Angeles
+
+Ky = Grupo Yojoa
+
+JKhg = Grupo de Honduras
+
+Pzm = Esquistos Cacaguapa
+
+Ti = Rocas Intrusivas
+
+KTi = Rocas Intrusivas
+
+Ki = Rocas Intrusivas
+
+Pzi = Rocas Intrusivas
+
+***** Spatial Reference Information (End) *****
+</supplinf>
+			<langdata Sync="TRUE">es</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<rngdates>
+					<begdate>19910501</begdate>
+					<enddate>19911201</enddate>
+				</rngdates>
+			</timeinfo>
+			<current>ground condition</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>None planned</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">-89.380414</westbc>
+				<eastbc Sync="TRUE">-83.117479</eastbc>
+				<northbc Sync="TRUE">16.514741</northbc>
+				<southbc Sync="TRUE">12.955634</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">245898.550200</leftbc><rightbc Sync="TRUE">914661.802200</rightbc><bottombc Sync="TRUE">1435332.438900</bottombc><topbc Sync="TRUE">1825874.525000</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>http://edcnts11.cr.usgs.gov/theo/</themekt>
+				<themekey>Geologia</themekey>
+				<themekey>Geology</themekey>
+			</theme>
+			<place>
+				<placekt>Ninguna</placekt>
+				<placekey>Honduras</placekey>
+				<placekey>Central America</placekey>
+				<placekey>Centroamerica</placekey>
+			</place>
+			<temporal>
+				<tempkt>Ninguna</tempkt>
+				<tempkey>1991</tempkey>
+			</temporal>
+		</keywords>
+		<accconst>Los datos del Atlas, puede ser accesado a travs del C.D. Atlas de Honduras "Datos Mitch" versin 1. Estos datos se encuentran disponible en el sitio: http://gisweb.ciat.cgiar.org/Mitch/index.htm</accconst>
+		<useconst>Los datos del Atlas, puede ser utilizados, para fines no comerciales, se requiere informar el proposito del estudio, o la  utilizacion del Atlas de Honduras.</useconst>
+		<browse>
+			<browsen>http://gisweb.ciat.cgiar.org/metadata/gifs/geologia.gif</browsen>
+			<browsed>Mapa Geologico de Honduras</browsed>
+			<browset>GIF - Graphic Interchange Format</browset>
+		</browse>
+		<native Sync="TRUE">Microsoft Windows Vista Version 6.1 (Build 7600) ; ESRI ArcCatalog 9.3.0.1770</native><natvform Sync="TRUE">Personal GeoDatabase Feature Class</natvform></idinfo>
+	<spdoinfo>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf><esriterm Name="n2201vA001991_HN"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">4</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">0</efeacnt><spindex Sync="TRUE">FALSE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf></spdoinfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntperp>
+					<cntper>Liliana Rojas, Marisol Calderon</cntper>
+					<cntorg>CIAT - Centro Internacional de Agricultura Tropical</cntorg>
+				</cntperp>
+				<cntaddr>
+					<addrtype>Mailing and Physical Address</addrtype>
+					<address>Recta Cali - Palmira. Km. 17</address>
+					<city>Cali</city>
+					<state>Valle del Cauca</state>
+					<postal>6713</postal>
+					<country>Colombia</country>
+				</cntaddr>
+				<cntvoice>(572) 4450000 Ext. 3705</cntvoice>
+				<cntfax>(572) 4450073</cntfax>
+				<cntemail>gis-communications@cgiar.org</cntemail>
+			</cntinfo>
+		</distrib>
+		<resdesc>CD-/data/honduras/biofisic/geologia.shp</resdesc>
+		<distliab>Los datos se pueden obtener a travs del sito web: http://gisweb.ciat.cgiar.org/Mitch/index.htm, el usuario debe reconocer la fuente de los datos en toda publicacion, informe o cualquier material que utilice los datos contenidos en el CD o la aplicacion descargable a traves del sitio web. El CIAT (o sus colaboradores) han obtenido datos de fuentes documentadas consideradas por ser confiables y se han realizado todos los esfuerzos posibles para asegurar la exactitud y precision de los datos. El CIAT no da garantias, incluidas garantias de mercadeo y de uso apropiado para propositos particulares.</distliab>
+		<stdorder><digform><digtinfo><transize Sync="TRUE">2.672</transize><dssize Sync="TRUE">2.672</dssize></digtinfo></digform></stdorder></distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20100715</metd>
+		<metc>
+			<cntinfo>
+				<cntperp>
+					<cntper>Elizabeth Barona A.</cntper>
+					<cntorg>CIAT</cntorg>
+				</cntperp>
+				<cntaddr>
+					<addrtype>Mailing and Physical Address</addrtype>
+					<address>Land Management Program</address>
+					<city>Cali</city>
+					<state>Valle del Cauca</state>
+					<postal>AA 6713</postal>
+					<country>Colombia</country>
+				</cntaddr>
+				<cntvoice>(57-2) 4450-000 ext 3729</cntvoice>
+				<cntfax>(57-2) 445-0073</cntfax>
+				<cntemail>e.barona@cgiar.org</cntemail>
+			</cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<langmeta Sync="TRUE">es</langmeta><mettc Sync="TRUE">local time</mettc></metainfo>
+	<Esri><CreaDate>20091122</CreaDate><CreaTime>00292400</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20120528</SyncDate><SyncTime>17040000</SyncTime><ModDate>20120528</ModDate><ModTime>17040000</ModTime><MetaID>{B01730B1-D974-4716-BC1E-4A2CC62D7946}</MetaID><DataProperties><lineage><Process ToolSource="C:\Program Files\ArcGIS\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20091122" Time="002924">Project geologia2 C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp PROJCS['WGS_1984_UTM_Zone_16N',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-87.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]] NAD_1927_To_WGS_1984_2 PROJCS['NAD_1927_UTM_Zone_16N',GEOGCS['GCS_North_American_1927',DATUM['D_North_American_1927',SPHEROID['Clarke_1866',6378206.4,294.9786982]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-87.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]]</Process><Process ToolSource="C:\Program Files\ArcGIS\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20091122" Time="005622">FeatureClassToFeatureClass C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp C:\SINIT\SINIT.mdb n2201vA001991_HN # "AREA 'AREA' true true false 12 Double 3 11 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,AREA,-1,-1;PERIMETER 'PERIMETER' true true false 12 Double 3 11 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,PERIMETER,-1,-1;GEOLAJU2_ 'GEOLAJU2_' true true false 11 Double 0 11 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,GEOLAJU2_,-1,-1;GEOLAJU2_I 'GEOLAJU2_I' true true false 11 Double 0 11 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,GEOLAJU2_I,-1,-1;UNIDAD_EST 'UNIDAD_EST' true true false 16 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,UNIDAD_EST,-1,-1;OID_ 'OID_' true true false 9 Long 0 9 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,OID_,-1,-1;TYPE 'TYPE' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,TYPE,-1,-1;Cnt_TYPE 'Cnt_TYPE' true true false 9 Long 0 9 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,Cnt_TYPE,-1,-1;First_UNIT 'First_UNIT' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,First_UNIT,-1,-1;First_BED_ 'First_BED_' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,First_BED_,-1,-1;First_LITH 'First_LITH' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,First_LITH,-1,-1;First_ERA 'First_ERA' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,First_ERA,-1,-1;First_SYST 'First_SYST' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,First_SYST,-1,-1;First_ROCK 'First_ROCK' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,First_ROCK,-1,-1;First_ENVI 'First_ENVI' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,First_ENVI,-1,-1;First_LAND 'First_LAND' true true false 254 Text 0 0 ,First,#,C:\NUEVO_SINIT\DATOS-CIAT\geologia2_Project.shp,First_LAND,-1,-1" # C:\SINIT\SINIT.mdb\n2201vA001991_HN</Process><Process ToolSource="C:\Program Files (x86)\ArcGIS\Desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\CopyFeatures" Date="20120528" Time="170401">CopyFeatures D:\SINIT\SINIT\SINIT.mdb\n2201vA001991_HN "D:\Escritorio\SINIT SHAPE COMPLETO 28.05.12\n2201vA001991_HN.shp" # 0 0 0</Process></lineage><itemProps><itemName Sync="TRUE">n2201vA001991_HN</itemName><imsContentType Sync="TRUE">002</imsContentType><itemSize Sync="TRUE">0.000</itemSize><itemLocation><linkage Sync="TRUE">file://\\SEPWKSSEC050\D$\Escritorio\SINIT SHAPE COMPLETO 28.05.12\n2201vA001991_HN.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation></itemProps><coordRef><type Sync="TRUE">Projected</type><geogcsn Sync="TRUE">GCS_WGS_1984</geogcsn><projcsn Sync="TRUE">WGS_1984_UTM_Zone_16N</projcsn><peXml Sync="TRUE">&lt;ProjectedCoordinateSystem xsi:type='typens:ProjectedCoordinateSystem' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.0'&gt;&lt;WKT&gt;PROJCS[&amp;quot;WGS_1984_UTM_Zone_16N&amp;quot;,GEOGCS[&amp;quot;GCS_WGS_1984&amp;quot;,DATUM[&amp;quot;D_WGS_1984&amp;quot;,SPHEROID[&amp;quot;WGS_1984&amp;quot;,6378137.0,298.257223563]],PRIMEM[&amp;quot;Greenwich&amp;quot;,0.0],UNIT[&amp;quot;Degree&amp;quot;,0.0174532925199433]],PROJECTION[&amp;quot;Transverse_Mercator&amp;quot;],PARAMETER[&amp;quot;False_Easting&amp;quot;,500000.0],PARAMETER[&amp;quot;False_Northing&amp;quot;,0.0],PARAMETER[&amp;quot;Central_Meridian&amp;quot;,-87.0],PARAMETER[&amp;quot;Scale_Factor&amp;quot;,0.9996],PARAMETER[&amp;quot;Latitude_Of_Origin&amp;quot;,0.0],UNIT[&amp;quot;Meter&amp;quot;,1.0],AUTHORITY[&amp;quot;EPSG&amp;quot;,32616]]&lt;/WKT&gt;&lt;XOrigin&gt;-5120900&lt;/XOrigin&gt;&lt;YOrigin&gt;-9998100&lt;/YOrigin&gt;&lt;XYScale&gt;450445547.3910538&lt;/XYScale&gt;&lt;ZOrigin&gt;-100000&lt;/ZOrigin&gt;&lt;ZScale&gt;10000&lt;/ZScale&gt;&lt;MOrigin&gt;-100000&lt;/MOrigin&gt;&lt;MScale&gt;10000&lt;/MScale&gt;&lt;XYTolerance&gt;0.001&lt;/XYTolerance&gt;&lt;ZTolerance&gt;0.001&lt;/ZTolerance&gt;&lt;MTolerance&gt;0.001&lt;/MTolerance&gt;&lt;HighPrecision&gt;true&lt;/HighPrecision&gt;&lt;WKID&gt;32616&lt;/WKID&gt;&lt;/ProjectedCoordinateSystem&gt;</peXml></coordRef></DataProperties></Esri><dataqual><lineage><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\Users\ADMINI~1\AppData\Local\Temp\xml3A00.tmp</srcused><procdate Sync="TRUE">20091121</procdate><proctime Sync="TRUE">20202900</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE"></srcused><procdate Sync="TRUE">20091122</procdate><proctime Sync="TRUE">00292400</proctime></procstep></lineage></dataqual><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows Server 2008 R2 Version 6.1 (Build 7600) ; ESRI ArcGIS 10.0.0.2414</envirDesc><dataLang><languageCode Sync="TRUE" value="spa" country="HND"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">n2201vA001991_HN</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">245898.5502</westBL><eastBL Sync="TRUE">914661.8022</eastBL><northBL Sync="TRUE">1825874.525</northBL><southBL Sync="TRUE">1435332.4389</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-89.380414</westBL><eastBL Sync="TRUE">-83.117479</eastBL><northBL Sync="TRUE">16.514741</northBL><southBL Sync="TRUE">12.955634</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox><descKeys><thesaName uuidref="723f6998-058e-11dc-8314-0800200c9a66"></thesaName><keyword Sync="TRUE">002</keyword></descKeys></dataIdInfo><mdLang><languageCode Sync="TRUE" value="spa"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\NKMARTINEZ-PC\C$\SINIT\SINIT\SINIT.mdb</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">2.672</transSize></distorTran><distorFormat><formatName Sync="TRUE">Personal GeoDatabase Feature Class</formatName></distorFormat></distributor><distFormat><formatName Sync="TRUE">Shapefile</formatName></distFormat><distTranOps><transSize Sync="TRUE">0.000</transSize></distTranOps></distInfo><spref><horizsys><cordsysn><geogcsn Sync="TRUE">GCS_WGS_1984</geogcsn><projcsn Sync="TRUE">WGS_1984_UTM_Zone_16N</projcsn></cordsysn><planar><planci><plance Sync="TRUE">coordinate pair</plance><plandu Sync="TRUE">meters</plandu><coordrep><absres Sync="TRUE">0.000100</absres><ordres Sync="TRUE">0.000100</ordres></coordrep></planci></planar><geodetic><horizdn Sync="TRUE">D_WGS_1984</horizdn><ellips Sync="TRUE">WGS_1984</ellips><semiaxis Sync="TRUE">6378137.000000</semiaxis><denflat Sync="TRUE">298.257224</denflat></geodetic></horizsys></spref><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE" code="32616">WGS_1984_UTM_Zone_16N</identCode><idCodeSpace Sync="TRUE">EPSG</idCodeSpace><idVersion Sync="TRUE">7.4.1</idVersion></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="n2201vA001991_HN"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="002"></GeoObjTypCd><geoObjCnt Sync="TRUE">0</geoObjCnt></geoObjTyp><geoObjCnt Sync="TRUE">672</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo><eainfo><detailed Name="n2201vA001991_HN"><enttyp><enttypl Sync="TRUE">n2201vA001991_HN</enttypl><enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">0</enttypc></enttyp><attr><attrlabl Sync="TRUE">FID</attrlabl><attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">Shape</attrlabl><attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Feature geometry.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Coordinates defining the features.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">AREA</attrlabl><attalias Sync="TRUE">AREA</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">PERIMETER</attrlabl><attalias Sync="TRUE">PERIMETER</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">GEOLAJU2_</attrlabl><attalias Sync="TRUE">GEOLAJU2_</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">GEOLAJU2_I</attrlabl><attalias Sync="TRUE">GEOLAJU2_I</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">UNIDAD_EST</attrlabl><attalias Sync="TRUE">UNIDAD_EST</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">16</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">OID_</attrlabl><attalias Sync="TRUE">OID_</attalias><attrtype Sync="TRUE">Integer</attrtype><attwidth Sync="TRUE">9</attwidth><atprecis Sync="TRUE">9</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">TYPE</attrlabl><attalias Sync="TRUE">TYPE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">Cnt_TYPE</attrlabl><attalias Sync="TRUE">Cnt_TYPE</attalias><attrtype Sync="TRUE">Integer</attrtype><attwidth Sync="TRUE">9</attwidth><atprecis Sync="TRUE">9</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">First_UNIT</attrlabl><attalias Sync="TRUE">First_UNIT</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">First_BED_</attrlabl><attalias Sync="TRUE">First_BED_</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">First_LITH</attrlabl><attalias Sync="TRUE">First_LITH</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">First_ERA</attrlabl><attalias Sync="TRUE">First_ERA</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">First_SYST</attrlabl><attalias Sync="TRUE">First_SYST</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">First_ROCK</attrlabl><attalias Sync="TRUE">First_ROCK</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">First_ENVI</attrlabl><attalias Sync="TRUE">First_ENVI</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">First_LAND</attrlabl><attalias Sync="TRUE">First_LAND</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">254</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">Shape_Leng</attrlabl><attalias Sync="TRUE">Shape_Leng</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">Shape_Area</attrlabl><attalias Sync="TRUE">Shape_Area</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">19</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Area of feature in internal units squared.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Positive real numbers that are automatically generated.</udom></attrdomv></attr></detailed></eainfo><mdDateSt Sync="TRUE">20120528</mdDateSt></metadata>
