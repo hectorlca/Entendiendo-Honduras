@@ -6,5 +6,8 @@ INformación sobre los municipios es extraida a través del creador de reportes 
 
 Archivos GIS o de Polígonos fueron extraidos del Sistema Nacional de Ordenamiento Territorial de Honduras_ http://www.sinit.hn/
 
+El primer mapa es del porcentaje de hogares que usan Microondas en Honduras.
+Es necesario agregar fuente, margen de error, y depsues continuar agregando diferentes pestanas y tabs.
+
 
 
