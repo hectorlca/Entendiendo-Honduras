@@ -7,6 +7,7 @@ library(maptools)
 library(sp)
 library(ggplot2)
 library(ggmap)
+library(rgdal)
 ```
 
 
@@ -19,7 +20,6 @@ plot(r, col = "darkorange", xaxt = 'n' , yaxt = 'n', ann = FALSE,
 
 
 ```
-
 
 
 Red Hidrica
@@ -53,8 +53,9 @@ plot(agua3, col = "steelblue", lend = "round", ljoin = "round")
 
 
 ```
-Red Hidrica Subset
 
+
+Red Hidrica Subset
 ```{r}
 agua <- readShapeLines( fn="shapefiles/red hidrica/m2301vL001970_HN", proj4string=CRS("+proj=longlat +datum=WGS84") )
 
