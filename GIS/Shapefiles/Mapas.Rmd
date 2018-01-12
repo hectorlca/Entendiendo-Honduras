@@ -1,0 +1,63 @@
+
+```{r}
+library(plyr)
+library(dplyr)
+library(tigris)
+library(maptools)
+library(sp)
+library(ggplot2)
+library(ggmap)
+library(rgdal)
+```
+
+
+
+Energia
+```{r, fig.width=12, fig.height=10}
+r <- readShapeLines( fn="shapefiles/energia/n3201vL002005_HN", proj4string=CRS("+proj=longlat +datum=WGS84") )
+plot(r, col = "darkorange", xaxt = 'n' , yaxt = 'n', ann = FALSE,
+     cex = 4, lwd = 2)
+
+
+```
+
+
+Red Hidrica
+```{r, fig.width=14, fig.height=10}
+agua <- readShapeLines( fn="shapefiles/red hidrica/m2301vL001970_HN", proj4string=CRS("+proj=longlat +datum=WGS84") )
+
+#Subset red secundaria y cuerpos chiquitos
+agua2 <- subset(agua, Codigo <= 2)
+agua3 <- subset(agua, Shape_Leng > 2000)
+
+
+shp <- spTransform(agua, CRS("+proj=longlat +datum=WGS84"))
+
+#'Fortify' to be read by ggplot
+
+shp$id <- rownames(shp@data)
+shp.df <- as.data.frame(shp)
+data_fort <- fortify(shp, region = "id")
+
+data_merged <- join(data_fort, shp.df, by="id")
+
+geom_path(data = data_merged,size=1,
+          aes(x=long,y=lat,group=group,
+              color="gray"))
+
+
+
+
+
+plot(agua3, col = "steelblue", lend = "round", ljoin = "round")
+
+
+```
+
+
+Red Hidrica Subset
+```{r}
+agua <- readShapeLines( fn="shapefiles/red hidrica/m2301vL001970_HN", proj4string=CRS("+proj=longlat +datum=WGS84") )
+
+```
+
