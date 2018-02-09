@@ -1,0 +1,35 @@
+---
+title: "World Bank Indicators"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+1) Load Libraries
+```{r}
+
+library(plyr)
+library(dplyr)
+library(tidyverse)
+library(tibble)
+library(wbstats)
+```
+
+2) Find Honduras Indicators
+
+```{r}
+
+catalog <- wbstats::wbindicators()
+topics <- wbstats::wbtopics()
+cache <- wbstats::wbcache()
+countries <- wbstats::wbcountries()
+
+hnsearch <- wbsearch(pattern = "enrolment")
+
+
+
+hnGini <- wb(indicator = "SI.POV.GINI", startdate = 2000, enddate = 2017, country = "HN")
+
+hnHDI <- wb(indicator = "SE.SEC.ENRR", startdate = 2000, enddate = 2010, country = "HN")
+
+```
+
