@@ -1,0 +1,20 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+1) Load Libraries
+```{r Libraries}
+
+library(plyr)
+library(dplyr)
+library(tidyverse)
+
+```
+
+2) Import Data for Presidential Results
+
+```{r}
+presidente2009 <- read.csv ("Elecciones/data/2009/resultados_presidencia_2009_por_municipio.csv")
+```
+
