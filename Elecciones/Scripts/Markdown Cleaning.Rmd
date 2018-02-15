@@ -9,12 +9,168 @@ editor_options:
 library(plyr)
 library(dplyr)
 library(tidyverse)
+library(tigris)
+library(maptools)
+library(maps)
+library(mapdata)
+library(sp)
+library(ggplot2)
+library(ggmap)
+library(rgdal)
+library(lettercase)
+library(choroplethr)
+library(highcharter)
 
 ```
 
 2) Import Data for Presidential Results
 
 ```{r}
-presidente2009 <- read.csv ("Elecciones/data/2009/resultados_presidencia_2009_por_municipio.csv")
+presidente2009 <- read.csv ("Elecciones/data/2009/resultados_presidente_2009_por_municipio.csv", stringsAsFactors = FALSE)
+presidente2013 <- read.csv ("Elecciones/data/2013/resultados_presidente_2013_por_municipio.csv", stringsAsFactors = FALSE)
+presidente2017 <- read.csv ("Elecciones/data/2017/resultados_presidente_2017_por_municipio.csv", stringsAsFactors = FALSE)
 ```
+
+3) Presidente 2009
+
+```{r Presidente 2009 }
+
+# Dejar solo los partidos para encontrar el ganador
+presidente2009.parties <- select(presidente2009, PN, PINU, DC, PL, UD)
+
+# Encontrar el ganador
+winners2009 <- as.data.frame(cbind
+                         (row.names(presidente2009.parties),
+                           apply(presidente2009.parties, 1, 
+                                 function(x) names(presidente2009.parties)[which(x==max(x))]))) 
+
+# Consolidar la dataframe entre estadisticas y ganadores
+
+p2009 <- cbind (presidente2009, winners2009$V2)
+p2009$ganador <- p2009$`winners2009$V2`
+p2009$`winners2009$V2` <- NULL
+
+# Determine Color Palette
+
+p2009$colorpartido <- 
+  ifelse(p2009$ganador == "PN", 
+         yes = "dodgerblue3", no = "firebrick3")
+
+#Limpiar Ambiente
+
+rm(presidente2009, presidente2009.parties, winners2009)
+
+```
+
+4) Presidente 2013
+
+```{r Presidente 2013 }
+
+# Dejar solo los partidos para encontrar el ganador
+presidente2013.parties <- select(presidente2013, DC, APH, PL, PAC, LIBRE, FAPER, PINU, PN)
+
+# Encontrar el ganador
+winners2013 <- as.data.frame(cbind
+                         (row.names(presidente2013.parties),
+                           apply(presidente2013.parties, 1, 
+                                 function(x) names(presidente2013.parties)[which(x==max(x))]))) 
+
+# Consolidar la dataframe entre estadisticas y ganadores
+
+p2013 <- cbind (presidente2013, winners2013$V2)
+p2013$ganador <- p2013$`winners2013$V2`
+p2013$`winners2013$V2` <- NULL
+
+#Limpiar Ambiente
+
+rm(presidente2013, presidente2013.parties, winners2013)
+
+```
+
+5) Presidente 2017
+
+```{r Presidente 2017}
+# Dejar solo los partidos para encontrar el ganador
+presidente2017.parties <- select(presidente2017, PL, PN, Alianza, DC, UD, PAC, APH, FA, VAMOS)
+
+# Encontrar el ganador
+winners2017 <- as.data.frame(cbind
+                         (row.names(presidente2017.parties),
+                           apply(presidente2017.parties, 1, 
+                                 function(x) names(presidente2017.parties)[which(x==max(x))]))) 
+
+# Consolidar la dataframe entre estadisticas y ganadores
+
+p2017 <- cbind (presidente2017, winners2017$V2)
+p2017$ganador <- p2017$`winners2017$V2`
+p2017$`winners2017$V2` <- NULL
+
+#Limpiar Ambiente
+
+rm(presidente2017, presidente2017.parties, winners2017)
+```
+
+6) Map Presidente 2009
+
+```{r}
+
+# Importar Shapefile
+
+municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
+
+#municipios.df <- as.data.frame(municipios)
+
+# Merge shapefile with data
+mun.merge <- 
+  geo_join(spatial_data = municipios,
+           data_frame = p2009,
+           by_sp = "nombre",
+           by_df = "Municipio",
+           how = "left")
+
+#####
+
+
+plot(mun.merge, 
+     col = mun.merge$colorpartido,
+     border = "white",
+     lwd = 1.75, lty = 1)
+
+
+
+
+##### Try with leaflet
+mun.leaf <- leaflet(data = mun.merge)
+
+mun.leaf %>% 
+  setView(lng = -86.934988, lat = 14.422422, zoom = 8) %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons()
+  
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

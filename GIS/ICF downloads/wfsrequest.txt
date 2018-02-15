@@ -1,0 +1,1 @@
+http://geoportal.icf.gob.hn:8081/geoserver/icf/wms?service=WFS&VERSION=1.0.0&REQUEST=GetFeature&typeName=m1103va002001_hn&outputFormat=SHAPE-ZIP
