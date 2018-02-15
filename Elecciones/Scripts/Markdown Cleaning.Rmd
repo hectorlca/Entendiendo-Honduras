@@ -23,15 +23,7 @@ library(leaflet)
 
 ```
 
-2) Import Data for Presidential Results
-
-```{r}
-
-presidente2013 <- read.csv ("Elecciones/data/2013/resultados_presidente_2013_por_municipio.csv", stringsAsFactors = FALSE)
-presidente2017 <- read.csv ("Elecciones/data/2017/resultados_presidente_2017_por_municipio.csv", stringsAsFactors = FALSE)
-```
-
-3) Presidente 2009
+2) Presidente 2009
 
 ```{r Presidente 2009 }
 presidente2009 <- read.csv ("Elecciones/data/2009/resultados_presidente_2009_por_municipio.csv", stringsAsFactors = FALSE)
@@ -64,61 +56,13 @@ rm(presidente2009, presidente2009.parties, winners2009)
 
 ```
 
-4) Presidente 2013
-
-```{r Presidente 2013 }
-
-# Dejar solo los partidos para encontrar el ganador
-presidente2013.parties <- select(presidente2013, DC, APH, PL, PAC, LIBRE, FAPER, PINU, PN)
-
-# Encontrar el ganador
-winners2013 <- as.data.frame(cbind
-                         (row.names(presidente2013.parties),
-                           apply(presidente2013.parties, 1, 
-                                 function(x) names(presidente2013.parties)[which(x==max(x))]))) 
-
-# Consolidar la dataframe entre estadisticas y ganadores
-
-p2013 <- cbind (presidente2013, winners2013$V2)
-p2013$ganador <- p2013$`winners2013$V2`
-p2013$`winners2013$V2` <- NULL
-
-#Limpiar Ambiente
-
-rm(presidente2013, presidente2013.parties, winners2013)
-
-```
-
-5) Presidente 2017
-
-```{r Presidente 2017}
-# Dejar solo los partidos para encontrar el ganador
-presidente2017.parties <- select(presidente2017, PL, PN, Alianza, DC, UD, PAC, APH, FA, VAMOS)
-
-# Encontrar el ganador
-winners2017 <- as.data.frame(cbind
-                         (row.names(presidente2017.parties),
-                           apply(presidente2017.parties, 1, 
-                                 function(x) names(presidente2017.parties)[which(x==max(x))]))) 
-
-# Consolidar la dataframe entre estadisticas y ganadores
-
-p2017 <- cbind (presidente2017, winners2017$V2)
-p2017$ganador <- p2017$`winners2017$V2`
-p2017$`winners2017$V2` <- NULL
-
-#Limpiar Ambiente
-
-rm(presidente2017, presidente2017.parties, winners2017)
-```
-
-6) Map Presidente 2009
+3) Map Presidente 2009
 
 ```{r}
 
 # Importar Shapefile
 
-#municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
+#municipios <- readOGR("GIS/Shapefiles/Administrativos/HND_adm2.shp")
 
 municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
 municipiosdf <- as.data.frame(municipios)
@@ -135,7 +79,7 @@ mun.merge <-
            by_df = "Municipio",
            how = "left")
 
-#####
+##### Do the Plot ###
 
 
 sp::plot(mun.merge, 
@@ -146,21 +90,179 @@ sp::plot(mun.merge,
      )
 
 
-### Try leaflet ###
+
+```
+
+4) Presidente 2013
+
+```{r Presidente 2013 }
+
+presidente2013 <- read.csv ("Elecciones/data/2013/resultados_presidente_2013_por_municipio.csv", stringsAsFactors = FALSE)
+
+# Dejar solo los partidos para encontrar el ganador
+presidente2013.parties <- select(presidente2013, DC, APH, PL, PAC, LIBRE, FAPER, PINU, PN)
+
+# Encontrar el ganador
+winners2013 <- as.data.frame(cbind
+                         (row.names(presidente2013.parties),
+                           apply(presidente2013.parties, 1, 
+                                 function(x) names(presidente2013.parties)[which(x==max(x))]))) 
+
+# Consolidar la dataframe entre estadisticas y ganadores
+
+p2013 <- cbind (presidente2013, winners2013$V2)
+p2013$ganador <- p2013$`winners2013$V2`
+p2013$`winners2013$V2` <- NULL
+
+p2013$colorpartido <- "gray80"
+
+p2013$colorpartido <- 
+  ifelse(p2013$ganador == "PN", 
+         yes = "dodgerblue3", no = p2013$colorpartido)
+
+p2013$colorpartido <- 
+  ifelse(p2013$ganador == "PL", 
+         yes = "firebrick3", no = p2013$colorpartido)
+
+p2013$colorpartido <- 
+  ifelse(p2013$ganador == "LIBRE", 
+         yes = "black", no = p2013$colorpartido)
+
+p2013$colorpartido <- 
+  ifelse(p2013$ganador == "PAC", 
+         yes = "goldenrod", no = p2013$colorpartido)
 
 
-leaf.transform <- spTransform(mun.merge,  CRS("+init=epsg:4326"))
+#Limpiar Ambiente
 
-leaflet(leaf.transform) %>%
-  setView(lng = -87.046650, lat = 14.580856 , zoom = 8) %>%
-  addProviderTiles("Esri.WorldStreetMap") %>%
-  addPolygons(data = leaf.transform,
-               fillColor = "blue",
-              color = "gray80")
+rm(presidente2013, presidente2013.parties, winners2013)
+
+```
+
+5) Map Presidente 2013
+
+```{r}
+
+# Importar Shapefile
+
+#municipios <- readOGR("GIS/Shapefiles/Administrativos/HND_adm2.shp")
+
+municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
+municipiosdf <- as.data.frame(municipios)
+
+####
+
+#municipios.df <- as.data.frame(municipios)
+
+# Merge shapefile with data
+mun.merge <- 
+  geo_join(spatial_data = municipios,
+           data_frame = p2013,
+           by_sp = "nombre",
+           by_df = "Municipio",
+           how = "left")
+
+##### Do the Plot ###
+
+
+sp::plot(mun.merge, 
+     col = mun.merge$colorpartido,
+     border = "white",
+     lwd = 1.75, lty = 1,
+     main = "Resultados Presidente: Elecciones 2013", cex.main = 2
+     )
 
 
 
 ```
+
+6) Presidente 2017
+
+```{r Presidente 2017}
+
+presidente2017 <- read.csv ("Elecciones/data/2017/resultados_presidente_2017_por_municipio.csv", stringsAsFactors = FALSE)
+
+
+# Dejar solo los partidos para encontrar el ganador
+presidente2017.parties <- select(presidente2017, PL, PN, Alianza, DC, UD, PAC, APH, FA, VAMOS)
+
+# Encontrar el ganador
+winners2017 <- as.data.frame(cbind
+                         (row.names(presidente2017.parties),
+                           apply(presidente2017.parties, 1, 
+                                 function(x) names(presidente2017.parties)[which(x==max(x))]))) 
+
+# Consolidar la dataframe entre estadisticas y ganadores
+
+p2017 <- cbind (presidente2017, winners2017$V2)
+p2017$ganador <- p2017$`winners2017$V2`
+p2017$`winners2017$V2` <- NULL
+
+
+### Definir colores de partidos ###
+p2017$colorpartido <- "gray80"
+
+p2017$colorpartido <- 
+  ifelse(p2017$ganador == "PN", 
+         yes = "dodgerblue3", no = p2017$colorpartido)
+
+p2017$colorpartido <- 
+  ifelse(p2017$ganador == "PL", 
+         yes = "firebrick3", no = p2017$colorpartido)
+
+p2017$colorpartido <- 
+  ifelse(p2017$ganador == "Alianza", 
+         yes = "black", no = p2017$colorpartido)
+
+#Limpiar Ambiente
+
+rm(presidente2017, presidente2017.parties, winners2017)
+```
+
+8) Map Presidente 2017
+
+```{r}
+
+# Importar Shapefile
+
+#municipios <- readOGR("GIS/Shapefiles/Administrativos/HND_adm2.shp")
+
+municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
+municipiosdf <- as.data.frame(municipios)
+
+####
+
+#municipios.df <- as.data.frame(municipios)
+
+# Merge shapefile with data
+mun.merge <- 
+  geo_join(spatial_data = municipios,
+           data_frame = p2017,
+           by_sp = "nombre",
+           by_df = "Municipio",
+           how = "left")
+
+##### Do the Plot ###
+
+
+sp::plot(mun.merge, 
+     col = mun.merge$colorpartido,
+     border = "white",
+     lwd = 1.75, lty = 1,
+     main = "Resultados Presidente: Elecciones 2017", cex.main = 2
+     )
+
+
+
+```
+
+
+
+
+
+
+
+
 
 
 
