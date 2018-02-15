@@ -8,7 +8,6 @@ editor_options:
 
 library(plyr)
 library(dplyr)
-library(tidyverse)
 library(tigris)
 library(maptools)
 library(maps)
@@ -17,16 +16,17 @@ library(sp)
 library(ggplot2)
 library(ggmap)
 library(rgdal)
-library(lettercase)
-library(choroplethr)
-library(highcharter)
+library(sf)
+library(leaflet)
+
+
 
 ```
 
 2) Import Data for Presidential Results
 
 ```{r}
-presidente2009 <- read.csv ("Elecciones/data/2009/resultados_presidente_2009_por_municipio.csv", stringsAsFactors = FALSE)
+
 presidente2013 <- read.csv ("Elecciones/data/2013/resultados_presidente_2013_por_municipio.csv", stringsAsFactors = FALSE)
 presidente2017 <- read.csv ("Elecciones/data/2017/resultados_presidente_2017_por_municipio.csv", stringsAsFactors = FALSE)
 ```
@@ -34,6 +34,7 @@ presidente2017 <- read.csv ("Elecciones/data/2017/resultados_presidente_2017_por
 3) Presidente 2009
 
 ```{r Presidente 2009 }
+presidente2009 <- read.csv ("Elecciones/data/2009/resultados_presidente_2009_por_municipio.csv", stringsAsFactors = FALSE)
 
 # Dejar solo los partidos para encontrar el ganador
 presidente2009.parties <- select(presidente2009, PN, PINU, DC, PL, UD)
@@ -59,6 +60,7 @@ p2009$colorpartido <-
 #Limpiar Ambiente
 
 rm(presidente2009, presidente2009.parties, winners2009)
+
 
 ```
 
@@ -116,7 +118,12 @@ rm(presidente2017, presidente2017.parties, winners2017)
 
 # Importar Shapefile
 
+#municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
+
 municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
+municipiosdf <- as.data.frame(municipios)
+
+####
 
 #municipios.df <- as.data.frame(municipios)
 
@@ -131,22 +138,27 @@ mun.merge <-
 #####
 
 
-plot(mun.merge, 
+sp::plot(mun.merge, 
      col = mun.merge$colorpartido,
      border = "white",
-     lwd = 1.75, lty = 1)
+     lwd = 1.75, lty = 1,
+     main = "Resultados Presidente: Elecciones 2009", cex.main = 2
+     )
 
 
+### Try leaflet ###
 
 
-##### Try with leaflet
-mun.leaf <- leaflet(data = mun.merge)
+leaf.transform <- spTransform(mun.merge,  CRS("+init=epsg:4326"))
 
-mun.leaf %>% 
-  setView(lng = -86.934988, lat = 14.422422, zoom = 8) %>%
-  addProviderTiles("CartoDB.Positron") %>%
-  addPolygons()
-  
+leaflet(leaf.transform) %>%
+  setView(lng = -87.046650, lat = 14.580856 , zoom = 8) %>%
+  addProviderTiles("Esri.WorldStreetMap") %>%
+  addPolygons(data = leaf.transform,
+               fillColor = "blue",
+              color = "gray80")
+
+
 
 ```
 
