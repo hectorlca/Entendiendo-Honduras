@@ -3,7 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-1) Load Libraries
+1) Load Libraries and Shapefile
 ```{r Libraries}
 
 library(plyr)
@@ -19,9 +19,76 @@ library(rgdal)
 library(sf)
 library(leaflet)
 
+municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
+
 
 
 ```
+
+2) Presidente 2005
+
+```{r Presidente 2005 }
+
+# Import Data
+
+presidente2005 <- read.csv ("Elecciones/data/2005/resultados_presidente_2005_por_municipio.csv", stringsAsFactors = FALSE)
+
+# Dejar solo los partidos para encontrar el ganador
+presidente2005.parties <- select(presidente2005, PINU, PN, PL, UD, DC)
+
+# Encontrar el ganador
+winners2005 <- as.data.frame(cbind
+                         (row.names(presidente2005.parties),
+                           apply(presidente2005.parties, 1, 
+                                 function(x) names(presidente2005.parties)[which(x==max(x))]))) 
+
+# Consolidar la dataframe entre estadisticas y ganadores
+
+p2005 <- cbind (presidente2005, winners2005$V2)
+p2005$ganador <- p2005$`winners2005$V2`
+p2005$`winners2005$V2` <- NULL
+
+# Determine Color Palette
+
+p2005$colorpartido <- 
+  ifelse(p2005$ganador == "PN", 
+         yes = "dodgerblue3", no = "firebrick3")
+
+#Limpiar Ambiente
+
+rm(presidente2005, presidente2005.parties, winners2005)
+
+
+```
+
+3) Map Presidente 2005
+
+```{r}
+
+# Merge shapefile with data
+
+mun.merge2005 <- 
+  geo_join(spatial_data = municipios,
+           data_frame = p2005,
+           by_sp = "nombre",
+           by_df = "Municipio",
+           how = "left")
+
+##### Do the Plot ###
+
+sp::plot(mun.merge2005, 
+     col = mun.merge2005$colorpartido,
+     border = "white",
+     lwd = 1.75, lty = 1,
+     main = "Resultados Presidente: Elecciones 2005", cex.main = 2
+     )
+
+
+
+```
+
+
+
 
 2) Presidente 2009
 
@@ -60,19 +127,9 @@ rm(presidente2009, presidente2009.parties, winners2009)
 
 ```{r}
 
-# Importar Shapefile
-
-#municipios <- readOGR("GIS/Shapefiles/Administrativos/HND_adm2.shp")
-
-municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
-municipiosdf <- as.data.frame(municipios)
-
-####
-
-#municipios.df <- as.data.frame(municipios)
-
 # Merge shapefile with data
-mun.merge <- 
+
+mun.merge2009 <- 
   geo_join(spatial_data = municipios,
            data_frame = p2009,
            by_sp = "nombre",
@@ -81,9 +138,8 @@ mun.merge <-
 
 ##### Do the Plot ###
 
-
-sp::plot(mun.merge, 
-     col = mun.merge$colorpartido,
+sp::plot(mun.merge2009, 
+     col = mun.merge2009$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
      main = "Resultados Presidente: Elecciones 2009", cex.main = 2
@@ -143,19 +199,9 @@ rm(presidente2013, presidente2013.parties, winners2013)
 
 ```{r}
 
-# Importar Shapefile
-
-#municipios <- readOGR("GIS/Shapefiles/Administrativos/HND_adm2.shp")
-
-municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
-municipiosdf <- as.data.frame(municipios)
-
-####
-
-#municipios.df <- as.data.frame(municipios)
-
 # Merge shapefile with data
-mun.merge <- 
+
+mun.merge2013 <- 
   geo_join(spatial_data = municipios,
            data_frame = p2013,
            by_sp = "nombre",
@@ -164,9 +210,8 @@ mun.merge <-
 
 ##### Do the Plot ###
 
-
-sp::plot(mun.merge, 
-     col = mun.merge$colorpartido,
+sp::plot(mun.merge2013, 
+     col = mun.merge2013$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
      main = "Resultados Presidente: Elecciones 2013", cex.main = 2
@@ -223,19 +268,9 @@ rm(presidente2017, presidente2017.parties, winners2017)
 
 ```{r}
 
-# Importar Shapefile
-
-#municipios <- readOGR("GIS/Shapefiles/Administrativos/HND_adm2.shp")
-
-municipios <- readOGR("GIS/ICF downloads/m1103va002001_hn.shp")
-municipiosdf <- as.data.frame(municipios)
-
-####
-
-#municipios.df <- as.data.frame(municipios)
-
 # Merge shapefile with data
-mun.merge <- 
+
+mun.merge2017 <- 
   geo_join(spatial_data = municipios,
            data_frame = p2017,
            by_sp = "nombre",
@@ -245,8 +280,8 @@ mun.merge <-
 ##### Do the Plot ###
 
 
-sp::plot(mun.merge, 
-     col = mun.merge$colorpartido,
+sp::plot(mun.merge2017, 
+     col = mun.merge2017$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
      main = "Resultados Presidente: Elecciones 2017", cex.main = 2
