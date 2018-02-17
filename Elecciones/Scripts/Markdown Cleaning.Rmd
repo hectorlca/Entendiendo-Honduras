@@ -37,16 +37,19 @@ presidente2005 <- read.csv ("Elecciones/data/2005/resultados_presidente_2005_por
 presidente2005.parties <- select(presidente2005, PINU, PN, PL, UD, DC)
 
 # Encontrar el ganador
+
 winners2005 <- as.data.frame(cbind
                          (row.names(presidente2005.parties),
                            apply(presidente2005.parties, 1, 
                                  function(x) names(presidente2005.parties)[which(x==max(x))]))) 
 
+winnersonly <- as.data.frame(do.call(rbind, winners2005$V2))
+
 # Consolidar la dataframe entre estadisticas y ganadores
 
-p2005 <- cbind (presidente2005, winners2005$V2)
-p2005$ganador <- p2005$`winners2005$V2`
-p2005$`winners2005$V2` <- NULL
+p2005 <- cbind (presidente2005, winnersonly$V2)
+p2005$ganador <- p2005$`winnersonly$V2`
+p2005$`winnersonly$V2` <- NULL
 
 # Determine Color Palette
 
@@ -56,7 +59,7 @@ p2005$colorpartido <-
 
 #Limpiar Ambiente
 
-rm(presidente2005, presidente2005.parties, winners2005)
+rm(presidente2005, presidente2005.parties, winners2005, winnersonly)
 
 
 ```
@@ -84,13 +87,9 @@ sp::plot(mun.merge2005,
      )
 
 
-
 ```
 
-
-
-
-2) Presidente 2009
+4) Presidente 2009
 
 ```{r Presidente 2009 }
 presidente2009 <- read.csv ("Elecciones/data/2009/resultados_presidente_2009_por_municipio.csv", stringsAsFactors = FALSE)
@@ -123,7 +122,7 @@ rm(presidente2009, presidente2009.parties, winners2009)
 
 ```
 
-3) Map Presidente 2009
+5) Map Presidente 2009
 
 ```{r}
 
@@ -149,7 +148,7 @@ sp::plot(mun.merge2009,
 
 ```
 
-4) Presidente 2013
+6) Presidente 2013
 
 ```{r Presidente 2013 }
 
@@ -195,7 +194,7 @@ rm(presidente2013, presidente2013.parties, winners2013)
 
 ```
 
-5) Map Presidente 2013
+7) Map Presidente 2013
 
 ```{r}
 
@@ -214,14 +213,20 @@ sp::plot(mun.merge2013,
      col = mun.merge2013$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
-     main = "Resultados Presidente: Elecciones 2013", cex.main = 2
-     )
+     main = "Resultados Presidente: Elecciones 2013", cex.main = 2)
+
+# Add Legend
+
+legend(815469, 1563638, title="Partido",
+   c("Partido Nacional","LIBRE","Liberal", "PAC"), 
+   fill = c("dodgerblue3", "black", "firebrick3", "goldenrod"), 
+   horiz=FALSE, cex=1)
 
 
 
 ```
 
-6) Presidente 2017
+8) Presidente 2017
 
 ```{r Presidente 2017}
 
@@ -264,7 +269,7 @@ p2017$colorpartido <-
 rm(presidente2017, presidente2017.parties, winners2017)
 ```
 
-8) Map Presidente 2017
+9) Map Presidente 2017
 
 ```{r}
 
@@ -279,17 +284,24 @@ mun.merge2017 <-
 
 ##### Do the Plot ###
 
-
 sp::plot(mun.merge2017, 
      col = mun.merge2017$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
-     main = "Resultados Presidente: Elecciones 2017", cex.main = 2
-     )
+     main = "Resultados Presidente: Elecciones 2017", cex.main = 2)
+
+legend(815469, 1563638, title="Partido",
+   c("Partido Nacional","Alianza","LIBERAL"), 
+   fill = c("dodgerblue3", "black", "firebrick3"), 
+   horiz=FALSE, cex=1)
+
 
 
 
 ```
+
+ 
+
 
 
 
