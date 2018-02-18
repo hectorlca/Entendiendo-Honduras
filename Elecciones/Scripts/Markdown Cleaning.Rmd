@@ -83,8 +83,14 @@ sp::plot(mun.merge2005,
      col = mun.merge2005$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
-     main = "Resultados Presidente: Elecciones 2005", cex.main = 2
+     main = "Presidential Election Results 2005", cex.main = 2.5
      )
+
+legend(810469, 1603638, title="",
+   c("National Party","Liberal Party"), 
+   fill = c("dodgerblue3","firebrick3"), 
+   horiz=FALSE, cex=1.3,
+   bty = "n")
 
 
 ```
@@ -141,8 +147,14 @@ sp::plot(mun.merge2009,
      col = mun.merge2009$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
-     main = "Resultados Presidente: Elecciones 2009", cex.main = 2
+     main = "Presidential Election Results 2009", cex.main = 2.5
      )
+
+legend(810469, 1603638, title="",
+   c("National Party", "Liberal Party"), 
+   fill = c("dodgerblue3", "firebrick3"), 
+   horiz=FALSE, cex=1.3,
+   bty = "n")
 
 
 
@@ -213,14 +225,15 @@ sp::plot(mun.merge2013,
      col = mun.merge2013$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
-     main = "Resultados Presidente: Elecciones 2013", cex.main = 2)
+     main = "Presidential Election Results 2013", cex.main = 2.5)
 
 # Add Legend
 
-legend(815469, 1563638, title="Partido",
-   c("Partido Nacional","LIBRE","Liberal", "PAC"), 
+legend(810469, 1603638, title="",
+   c("National Party","LIBRE","Liberal Party", "Anticorruption Party"), 
    fill = c("dodgerblue3", "black", "firebrick3", "goldenrod"), 
-   horiz=FALSE, cex=1)
+   horiz=FALSE, cex=1.3,
+   bty = "n")
 
 
 
@@ -288,12 +301,13 @@ sp::plot(mun.merge2017,
      col = mun.merge2017$colorpartido,
      border = "white",
      lwd = 1.75, lty = 1,
-     main = "Resultados Presidente: Elecciones 2017", cex.main = 2)
+     main = "Presidential Election Results 2017", cex.main = 2.5)
 
-legend(815469, 1563638, title="Partido",
-   c("Partido Nacional","Alianza","LIBERAL"), 
+legend(810469, 1603638, title="",
+   c("National Party","LIBRE-PINU Alliance","Liberal Party"), 
    fill = c("dodgerblue3", "black", "firebrick3"), 
-   horiz=FALSE, cex=1)
+   horiz=FALSE, cex=1.3,
+   bty = "n")
 
 
 
