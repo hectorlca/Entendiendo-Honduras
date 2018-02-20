@@ -41,11 +41,13 @@ sumCensus <- summarise(groupedCensus, cargamasc = sum(as.numeric(hombre)), carga
 carga <- filter(sumCensus, bracket != "Menor" )
 carga$total <- carga$cargamasc + carga$cargafem
 
+
+
 ### Carga por Departamento ###
 
 carga.dept <- 
   group_by(carga, departamento) %>%
-  summarise(cargatotal = sum(total))
+  summarise(cargamasc = sum(cargamasc), cargafem = sum(cargafem), cargatotal = sum(total))
 
 
 
