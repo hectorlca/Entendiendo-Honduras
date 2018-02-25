@@ -1,3 +1,4 @@
+
 Load Libraries and data
 
 ```{r}
@@ -14,7 +15,7 @@ library(ggpmisc)
 library(grid)
 library(gtable)
 
-dat <- read.csv("C:/Users/Titi/Google Drive/idh y turnout.csv")
+dat <- read.csv("Elecciones/data/idh y turnout.csv")
 formula <- y ~ x
 
 ```
@@ -64,7 +65,7 @@ ggsave(
   units = "in",
   width = 12.5,
   height = 8.5,
-  path = "C:/Users/Titi/Google Drive/data/visualizaciones",
+  path = "Elecciones/Visualizaciones",
   dpi = 1000)
 ```
 
@@ -112,12 +113,13 @@ ggsave(
   units = "in",
   width = 12.5,
   height = 8.5,
-  path = "C:/Users/Titi/Google Drive/data/visualizaciones",
+  path = "Elecciones/Visualizaciones",
   dpi = 1000)
 
 ```
 
 Ruralidad y Turnout
+
 ```{r}
 turnout.pl <- ggplot(dat)
 
@@ -167,7 +169,7 @@ ggsave(
   units = "in",
   width = 12.5,
   height = 8.5,
-  path = "C:/Users/Titi/Google Drive/data/visualizaciones",
+  path = "Elecciones/Visualizaciones",
   dpi = 1000)
 
 ```
