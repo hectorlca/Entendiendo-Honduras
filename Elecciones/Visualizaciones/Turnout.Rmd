@@ -1,0 +1,174 @@
+Load Libraries and data
+
+```{r}
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(ggThemeAssist)
+library(scales)
+library(ggrepel)
+library(sandwich)
+library(lmtest)
+library(ggpmisc)
+library(grid)
+library(gtable)
+
+dat <- read.csv("C:/Users/Titi/Google Drive/idh y turnout.csv")
+formula <- y ~ x
+
+```
+
+IDH Y Turnout
+
+```{r}
+turnout.pl <- ggplot(dat)
+
+turnout.pl <- turnout.pl +  
+  geom_point(aes(x = dat$IDH, y = dat$Turnout)) + 
+  geom_smooth(aes(x = dat$IDH, y = dat$Turnout),
+              method = "lm",
+              se = FALSE,
+              color = "gray60") +
+  geom_text_repel(aes(x = dat$IDH, y = dat$Turnout, label = dat$Departamento),
+                  direction = "y") +
+  
+  stat_poly_eq(aes(x = dat$IDH, y = dat$Turnout,
+                   label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               label.x.npc = "right", label.y = 0.72,
+               formula = formula, parse = TRUE, size = 6,
+               geom = "text") + 
+  
+  scale_y_continuous(
+    breaks = seq(0.45, 0.8 , .05),
+    limits = c(0.45, 0.8),
+    expand = c(0, 0),
+    labels = scales::percent)
+
+turnout.pl <- turnout.pl + theme_economist() + 
+  theme(plot.subtitle = element_text(vjust = 1), 
+        plot.caption = element_text(vjust = 1), 
+        axis.title = element_text(size = 14), 
+        axis.text = element_text(size = 12), 
+        axis.text.y = element_text(size = 12), 
+        plot.title = element_text(size = 18, 
+                                  face = "bold", hjust = 0.5)) +
+  labs(title = "", 
+       x = "Level of Development", y = "VAP Turnout", 
+       size = 14)
+
+ggsave(
+  "idhturnout.png",
+  turnout.pl,
+  device = "png",
+  units = "in",
+  width = 12.5,
+  height = 8.5,
+  path = "C:/Users/Titi/Google Drive/data/visualizaciones",
+  dpi = 1000)
+```
+
+Literacy y Turnout
+
+```{r}
+turnout.pl <- ggplot(dat)
+
+turnout.pl <- turnout.pl +  
+  geom_point(aes(x = dat$Literacy, y = dat$Turnout)) + 
+  geom_smooth(aes(x = dat$Literacy, y = dat$Turnout),
+              method = "lm",
+              se = FALSE,
+              color = "gray60") +
+  geom_text_repel(aes(x = dat$Literacy, y = dat$Turnout, label = dat$Departamento),
+                  direction = "y") +
+  scale_y_continuous(
+    breaks = seq(0.45, 0.8 , .05),
+    limits = c(0.45, 0.8),
+    expand = c(0, 0),
+    labels = scales::percent) + 
+  
+  stat_poly_eq(aes(x = dat$Literacy, y = dat$Turnout,
+                   label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               label.x.npc = "right", label.y = 0.72,
+               formula = formula, parse = TRUE, size = 6,
+               geom = "text")
+
+turnout.pl <- turnout.pl + theme_economist() + 
+  theme(plot.subtitle = element_text(vjust = 1), 
+    plot.caption = element_text(vjust = 1), 
+    axis.title = element_text(size = 14), 
+    axis.text = element_text(size = 12), 
+    axis.text.y = element_text(size = 12), 
+    plot.title = element_text(size = 18, 
+                              face = "bold", hjust = 0.5)) +
+  labs(title = "", 
+    x = "Literacy", y = "VAP Turnout", 
+    size = 14)
+
+ggsave(
+  "litturnout.png",
+  turnout.pl,
+  device = "png",
+  units = "in",
+  width = 12.5,
+  height = 8.5,
+  path = "C:/Users/Titi/Google Drive/data/visualizaciones",
+  dpi = 1000)
+
+```
+
+Ruralidad y Turnout
+```{r}
+turnout.pl <- ggplot(dat)
+
+turnout.pl <- turnout.pl +  
+  geom_point(aes(x = dat$Ruralidad, y = dat$Turnout)) + 
+  geom_smooth(aes(x = dat$Ruralidad, y = dat$Turnout),
+              method = "lm",
+              se = FALSE,
+              color = "gray60") +
+  geom_text_repel(aes(x = dat$Ruralidad, y = dat$Turnout, label = dat$Departamento),
+                  direction = "y") +
+  
+  stat_poly_eq(aes(x = dat$Ruralidad, y = dat$Turnout,
+                   label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               label.x.npc = "left", label.y = 0.72,
+               formula = formula, parse = TRUE, size = 6,
+               geom = "text") + 
+  
+  scale_y_continuous(
+    breaks = seq(0.45, 0.8 , .05),
+    limits = c(0.45, 0.8),
+    expand = c(0, 0),
+    labels = scales::percent) + 
+  
+  scale_x_continuous(
+    breaks = seq(0, 1 , 0.2),
+    limits = c(0.18, 1),
+    #expand = c(0, 0),
+    labels = scales::percent)
+
+turnout.pl <- turnout.pl + theme_economist() + 
+  theme(plot.subtitle = element_text(vjust = 1), 
+        plot.caption = element_text(vjust = 1), 
+        axis.title = element_text(size = 14), 
+        axis.text = element_text(size = 12), 
+        axis.text.y = element_text(size = 12), 
+        plot.title = element_text(size = 18, 
+                                  face = "bold", hjust = 0.5)) +
+  labs(title = "", 
+       x = "Percentage of Rural Population", y = "VAP Turnout", 
+       size = 14)
+
+ggsave(
+  "Ruralidadturnout.png",
+  turnout.pl,
+  device = "png",
+  units = "in",
+  width = 12.5,
+  height = 8.5,
+  path = "C:/Users/Titi/Google Drive/data/visualizaciones",
+  dpi = 1000)
+
+```
+
