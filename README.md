@@ -1,13 +1,10 @@
-# HN-GIS
+# Entiendo Honduras
 
-Este proyecto pone a disponbilidad un mapa interactivo de Honduras, a nivel de municipio para enseñar diferentes datos de Honduras.
+Este proyecto recoge estadisticas sobre Honduras y trata de encontrar correlaciones estadisticas entre indicadores.
 
-INformación sobre los municipios es extraida a través del creador de reportes REDATAM en la pagina web del Instituto Nacional de Estadisticas.
+La parte mas desarrollada tiene que ver con los ultimos 4 procesos electorales pasados.
 
-Archivos GIS o de Polígonos fueron extraidos del Sistema Nacional de Ordenamiento Territorial de Honduras_ http://www.sinit.hn/
-
-El primer mapa es del porcentaje de hogares que usan Microondas en Honduras.
-Es necesario agregar fuente, margen de error, y depsues continuar agregando diferentes pestanas y tabs.
+La siguiente etapa es terminar de recoger todos los datos del Censo 2013 del INE, cuando la bendita pagina este funcionado.
 
 
 
