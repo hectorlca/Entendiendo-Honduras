@@ -1,0 +1,441 @@
+---
+title: "Mapas Casa Hunting"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+Load Libraries
+```{r}
+library(plyr)
+library(dplyr)
+library(tigris)
+library(maptools)
+library(maps)
+library(mapdata)
+library(sp)
+library(ggplot2)
+library(ggmap)
+library(rgdal)
+library(sf)
+library(smoothr)
+library(viridisLite)
+library(rgeos)
+library(smooth)
+library(rmapshaper)
+library(geojsonio)
+library(tidyr)
+library(broom)
+library(tmaptools)
+
+```
+
+Setup
+```{r}
+municipios <- readOGR ("GIS/ICF downloads/m1103va002001_hn.shp")
+#municipios <- ms_simplify(municipios, keep = 0.05)
+
+
+municipios$colorin <- NA
+municipios$id <- (1:nrow(municipios))-1
+
+municipios$colorin <- 
+  ifelse(municipios$nombre == "Santa Lucia", 
+         yes = NA, no = municipios$colorin)
+
+municipios$colorin <- 
+  ifelse(municipios$nombre == "Valle de Angeles", 
+         yes = NA, no = municipios$colorin)
+
+municipios$colorin <- 
+  ifelse(municipios$nombre == "Tatumbla", 
+         yes = 70, no = municipios$colorin)
+
+municipios$colorin <- 
+  ifelse(municipios$nombre == "Distrito Central", 
+         yes = 90, no = municipios$colorin)
+
+
+### Prep for merge ###
+fm <- subset (municipios, dep == 8)
+fmsmooth <- ms_simplify(fm, keep = .003)
+
+fmfort <- fortify(fm)
+fmdf <- as.data.frame(fmsmooth)
+fmdf <- select(fmdf, nombre, id, colorin)
+
+merged <- merge(fmfort, fmdf, by = "id")
+
+###Clean Workspace###
+rm(fm, fmdf, fmfort, municipios, fmsmooth)
+
+
+
+
+```
+
+Todo Francisco Morazan
+
+```{r}
+p <- 
+  ggplot(data = merged) + 
+  geom_polygon(data = merged, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 0.8) +
+ 
+  scale_fill_gradient(low = "#6baed6", high = "#08519c",
+  space = "Lab", na.value = "grey90", guide = "none",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() + 
+  
+
+  theme(legend.title = element_blank())+
+  theme(legend.position= c(0.0,0.8)) + 
+  theme(legend.key.size = unit(1.2, "cm"),
+        legend.text = element_text(color = "white"),
+        #legend.margin = margin(c(5, 5, 5, 10)),
+        legend.key = element_rect(fill = "white"),
+        legend.key.height = unit(1.0, "cm")) +
+    guides(color = guide_legend(override.aes = list(linetype = 0, size = 5)))
+  
+
+  
+p
+
+
+
+```
+
+El que solo tegus sombreado
+
+``` {r}
+#Se cambian los valores de los municipios a cero y se deja en 100 el que se quiere seombrear
+
+merged.teg <- merged
+
+p <- 
+  ggplot(data = merged.teg) + 
+  geom_polygon(data = merged.teg, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 0.8) +
+ 
+  scale_fill_gradient(low = "gray90", high = "#08519c",
+  space = "Lab", na.value = "grey90", guide = "legend",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() +
+        theme(legend.position = "none")
+  
+p
+
+
+```
+
+El que solo tegus guindado
+
+```{r}
+#Se cambian los valores de los municipios a cero y se deja en 100 el que se quiere seombrear
+
+merged.tat <- subset(merged, nombre == "Distrito Central")
+
+
+
+p <- 
+  ggplot(data = merged.tat) + 
+  geom_polygon(data = merged.tat, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 0.8) +
+ 
+  scale_fill_gradient(low = "#08519c", high = "#08519c",
+  space = "Lab", na.value = "grey90", guide = "legend",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() +
+        theme(legend.position = "none")
+  
+p
+
+
+```
+
+
+El que solo tatumbla guindado
+
+``` {r}
+#Se cambian los valores de los municipios a cero y se deja en 100 el que se quiere seombrear
+
+merged.tat <- subset(merged, nombre == "Tatumbla")
+
+
+
+p <- 
+  ggplot(data = merged.tat) + 
+  geom_polygon(data = merged.tat, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 0.8) +
+ 
+  scale_fill_gradient(low = "#4292c6", high = "#4292c6",
+  space = "Lab", na.value = "grey90", guide = "legend",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() +
+        theme(legend.position = "none")
+  
+p
+
+
+```
+
+El que solo santa lucia guindado
+
+```{r}
+#Se cambian los valores de los municipios a cero y se deja en 100 el que se quiere seombrear
+
+merged.sl <- subset(merged, nombre == "Santa Lucia")
+sl.smooth <- smooth(merged.sl, keep = .0001)
+
+
+p <- 
+  ggplot(data = merged.sl) + 
+  geom_polygon(data = merged.sl, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 1.0) +
+ 
+  scale_fill_gradient(low = "#2171b5", high = "#2171b5",
+  space = "Lab", na.value = "grey90", guide = "legend",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() +
+        theme(legend.position = "none")
+  
+p
+
+
+```
+
+El que solo Valle de Angeles guindado
+
+```{r}
+#Se cambian los valores de los municipios a cero y se deja en 100 el que se quiere seombrear
+
+merged.sl <- subset(merged, nombre == "Valle de Angeles")
+sl.smooth <- smooth(merged.sl, keep = .0001)
+
+
+p <- 
+  ggplot(data = merged.sl) + 
+  geom_polygon(data = merged.sl, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 1.0) +
+ 
+  scale_fill_gradient(low = "#4292c6", high = "#4292c6",
+  space = "Lab", na.value = "grey90", guide = "legend",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() +
+        theme(legend.position = "none")
+  
+p
+
+
+```
+
+
+Teg - Valle
+```{r}
+
+p <- 
+  ggplot(data = merged) + 
+  geom_polygon(data = merged, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 0.7) +
+ 
+  scale_fill_gradient(low = "#4292c6", high = "#08519c",
+  space = "Lab", na.value = "grey90", guide = "none",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() + 
+  
+
+  theme(legend.title = element_blank())+
+  theme(legend.position= c(0.0,0.8)) + 
+  theme(legend.key.size = unit(1.2, "cm"),
+        legend.text = element_text(color = "white"),
+        #legend.margin = margin(c(5, 5, 5, 10)),
+        legend.key = element_rect(fill = "white"),
+        legend.key.height = unit(1.0, "cm")) +
+    guides(color = guide_legend(override.aes = list(linetype = 0, size = 5)))
+  
+
+  
+p
+```
+
+
+Teg - Santa Lucia
+```{r}
+
+p <- 
+  ggplot(data = merged) + 
+  geom_polygon(data = merged, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 0.7) +
+ 
+  scale_fill_gradient(low = "#2171b5", high = "#08519c",
+  space = "Lab", na.value = "grey90", guide = "none",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() + 
+  
+
+  theme(legend.title = element_blank())+
+  theme(legend.position= c(0.0,0.8)) + 
+  theme(legend.key.size = unit(1.2, "cm"),
+        legend.text = element_text(color = "white"),
+        #legend.margin = margin(c(5, 5, 5, 10)),
+        legend.key = element_rect(fill = "white"),
+        legend.key.height = unit(1.0, "cm")) +
+    guides(color = guide_legend(override.aes = list(linetype = 0, size = 5)))
+  
+
+  
+p
+```
+
+
+Teg - Tatumbla
+```{r}
+
+p <- 
+  ggplot(data = merged) + 
+  geom_polygon(data = merged, 
+               aes(fill= colorin, x = long, y = lat, group = group),
+               colour = "white", lwd = 0.7) +
+ 
+  scale_fill_gradient(low = "#6baed6", high = "#08519c",
+  space = "Lab", na.value = "grey90", guide = "none",
+    aesthetics = "fill") +
+
+      theme(plot.subtitle = element_text(vjust = 1),
+          axis.text.x=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks = element_blank(),
+          plot.caption = element_text(vjust = 1), 
+          panel.grid.major = element_line(colour = NA, 
+        linetype = "blank"), panel.grid.minor = element_line(colour = NA, 
+        linetype = "blank"), panel.background = element_rect(fill = NA),
+        axis.title = element_blank())+
+        labs(x = NULL, y = NULL) +
+        coord_equal() + 
+  
+
+  theme(legend.title = element_blank())+
+  theme(legend.position= c(0.0,0.8)) + 
+  theme(legend.key.size = unit(1.2, "cm"),
+        legend.text = element_text(color = "white"),
+        #legend.margin = margin(c(5, 5, 5, 10)),
+        legend.key = element_rect(fill = "white"),
+        legend.key.height = unit(1.0, "cm")) +
+    guides(color = guide_legend(override.aes = list(linetype = 0, size = 5)))
+  
+
+  
+p
+```
+
+
+Guardar
+```{r}
+ggsave(
+  "solo teg",
+  p,
+  device = "png",
+  units = "in",
+  width = 8,
+  height = 10,
+  path = "mapasch",
+  dpi = 1000)
+
+```
+
+
